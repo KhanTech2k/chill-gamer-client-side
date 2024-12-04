@@ -59,8 +59,8 @@ const MyReviews = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            userReviews.map(review => <tr key={review._id}>
-                                <th>1</th>
+                            userReviews.map((review, index) => <tr key={review._id}>
+                                <th>{index + 1}</th>
                                 <td>{review.gameTitle}</td>
                                 <td>{review.reviewDescription}</td>
                                 <td>Blue</td>
