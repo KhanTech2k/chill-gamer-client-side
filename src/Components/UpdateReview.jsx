@@ -4,7 +4,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 
 const UpdateReview = () => {
-    const {gameCover, gameTitle, publishingYear, rating, genre, email, reviewDescription, name } = useLoaderData()
+    const {_id, gameCover, gameTitle, publishingYear, rating, genre, email, reviewDescription, name } = useLoaderData()
     const { user } = useContext(AuthContext)
     const handleUpdateReview = event => {
         event.preventDefault();
@@ -24,12 +24,12 @@ const UpdateReview = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newReview)
+            body: JSON.stringify(updatedReview)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.insertedId) {
+                if (data.modifiedCount) {
                     Swal.fire({
                         title: "success!",
                         text: ' Updated successfully',
