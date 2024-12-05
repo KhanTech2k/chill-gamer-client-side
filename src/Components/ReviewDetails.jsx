@@ -37,7 +37,7 @@ const ReviewDetails = () => {
             username: user.displayName || "Anonymous",
         };
 
-        const isDuplicate = watchList.some(
+        const isDuplicate = watchList.find(
             (item) =>
                 item.reviewId === watchItem.reviewId && item.userEmail === watchItem.userEmail
         );

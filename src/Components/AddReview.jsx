@@ -34,6 +34,7 @@ const AddReview = () => {
                         icon: 'success',
                         confirmButtonText: 'cool'
                     })
+                    form.reset()
                 }
             })
     }
