@@ -1,14 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const ReviewDetails = () => {
-    const review = useLoaderData(); // Data fetched via loader
+    const review = useLoaderData();
     const { user } = useContext(AuthContext);
+    const [watchList, setWatchList] = useState([]);
 
-    const handleAddToWatchlist = () => {
-        const watchlistData = {
+    useEffect(() => {
+        if (user?.email) {
+            fetch('http://localhost:5000/watchlist')
+                .then((res) => res.json())
+                .then((data) => {
+                    const userWatchlist = data.filter(
+                        (item) => item.userEmail === user.email
+                    );
+                    setWatchList(userWatchlist);
+                })
+                .catch((error) =>
+                    console.error("Error fetching watchlist:", error)
+                );
+        }
+    }, [user?.email]);
+    console.log("Logged-in User Email:", user?.email);
+
+    const handleWatchList = () => {
+        const watchItem = {
             reviewId: review._id,
             gameTitle: review.gameTitle,
             reviewDescription: review.reviewDescription,
@@ -19,37 +37,46 @@ const ReviewDetails = () => {
             username: user.displayName || "Anonymous",
         };
 
-        fetch(`http://localhost:5000/watchlist`, {
+        const isDuplicate = watchList.some(
+            (item) =>
+                item.reviewId === watchItem.reviewId && item.userEmail === watchItem.userEmail
+        );
+
+        if (isDuplicate) {
+            Swal.fire({
+                title: "Already Added",
+                text: "This game is already in your watchlist!",
+                icon: "info",
+            });
+            return;
+        }
+
+        fetch("http://localhost:5000/watchlist", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "content-type": "application/json",
             },
-            body: JSON.stringify(watchlistData),
+            body: JSON.stringify(watchItem),
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
-                if (data.insertedId) {
+                if (data.acknowledged) {
                     Swal.fire({
-                        title: "Added to Watchlist",
-                        text: "This review has been added to your watchlist.",
+                        title: "Success",
+                        text: "Successfully added to the watchlist!",
                         icon: "success",
                     });
-                } else {
-                    Swal.fire({
-                        title: "Error",
-                        text: "Failed to add this review to your watchlist.",
-                        icon: "error",
-                    });
+                    setWatchList((prev) => [...prev, watchItem]); 
                 }
             })
-            .catch(() =>
+            .catch((error) => {
+                console.error("Error adding to watchlist:", error);
                 Swal.fire({
                     title: "Error",
-                    text: "An error occurred. Please try again.",
+                    text: "Failed to add to the watchlist. Please try again.",
                     icon: "error",
-                })
-            );
+                });
+            });
     };
 
     return (
@@ -67,7 +94,7 @@ const ReviewDetails = () => {
                     <p className="text-lg mt-2">Description: {review.reviewDescription}</p>
                     <p className="text-lg mt-2">Reviewer: {review.reviewerName}</p>
                     <p className="text-lg mt-2">Email: {review.email}</p>
-                    <button onClick={handleAddToWatchlist} className="btn btn-primary mt-4">
+                    <button onClick={handleWatchList} className="btn btn-primary mt-4">
                         Add to Watchlist
                     </button>
                 </div>

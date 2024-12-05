@@ -31,12 +31,12 @@ const router = createBrowserRouter([
       {
         path: '/allReviews',
         element: <AllReviews></AllReviews>,
-        loader:()=>fetch('http://localhost:5000/review')
+        loader: () => fetch('http://localhost:5000/review')
       },
       {
         path: '/allReviews/reviewDetails/:id',
         element: <ReviewDetails></ReviewDetails>,
-        loader: ({params})=>fetch(`http://localhost:5000/review/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`)
       },
       {
         path: '/addReview',
@@ -50,11 +50,12 @@ const router = createBrowserRouter([
       {
         path: '/myreviews/updateReview/:id',
         element: <UpdateReview></UpdateReview>,
-        loader: ({params})=>fetch(`http://localhost:5000/review/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`)
       },
       {
         path: '/watchlist',
-        element: <GameWatchlist></GameWatchlist>
+        element: <GameWatchlist></GameWatchlist>,
+        loader: () => fetch('http://localhost:5000/watchlist')
       },
       {
         path: '/login',
