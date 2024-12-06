@@ -1,4 +1,11 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { 
+    createUserWithEmailAndPassword, 
+    GoogleAuthProvider, 
+    onAuthStateChanged, 
+    signInWithEmailAndPassword, 
+    signOut, 
+    updateProfile 
+} from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,12 +19,10 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const createNewUser = (email, password) => {
-        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
     const signInWithEmail = (email, password) => {
-        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     };
 
@@ -57,15 +62,13 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
 
-            if (currentUser) {
-                toast.success(`Welcome back, ${currentUser.displayName || currentUser.email}!`);
-            }
+            
         });
 
         return () => {
             unsubscribe();
         };
-    }, []);
+    }, [user]);
 
     if (loading) {
         return (

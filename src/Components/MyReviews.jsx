@@ -12,7 +12,6 @@ const MyReviews = () => {
     const userReviews = reviews.filter(review => review.email === user?.email);
 
     const handleDelete = id => {
-        console.log(id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -24,7 +23,7 @@ const MyReviews = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/review/${id}`, {
+                fetch(`https://chill-gamer-server-jet.vercel.app/review/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

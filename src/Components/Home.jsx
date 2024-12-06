@@ -11,7 +11,6 @@ import "animate.css";
 const Home = () => {
     const reviews = useLoaderData();
     console.log(reviews)
-
     const highestRatedReviews = reviews
         .sort((a, b) => b.rating - a.rating)
         .slice(0, 6);

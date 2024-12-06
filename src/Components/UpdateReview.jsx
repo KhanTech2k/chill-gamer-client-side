@@ -18,8 +18,7 @@ const UpdateReview = () => {
         const reviewDescription = form.reviewDescription.value;
         const name = form.name.value;
         const updatedReview = { gameCover, gameTitle, publishingYear, rating, genre, email, reviewDescription, name }
-        console.log(updatedReview)
-        fetch(`http://localhost:5000/review/${_id}`, {
+        fetch(`https://chill-gamer-server-jet.vercel.app/review/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -28,7 +27,6 @@ const UpdateReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     Swal.fire({
                         title: "success!",

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
@@ -51,16 +52,29 @@ const Register = () => {
                             displayName: name,
                             photoURL: photo,
                         }));
-                        navigate('/');
+                        // Show SweetAlert2 Success Modal
+                        Swal.fire({
+                            title: 'Registration Successful!',
+                            text: `Welcome, ${name}! Your account has been created successfully.`,
+                            icon: 'success'
+                        }).then(() => {
+                            navigate('/'); // Navigate to the home page
+                        });
                     })
                     .catch((error) => {
-                        // console.error(error);
+                        // Handle update profile error
+                        console.error(error);
                     });
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                // console.error("Registration Error:", errorMessage);
                 setError(errorMessage);
+                Swal.fire({
+                    title: 'Registration Failed',
+                    text: 'There was an error creating your account. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'Retry',
+                });
             });
     };
 
@@ -121,7 +135,7 @@ const Register = () => {
                             onClick={() => setShowPassWord(!showPassword)}
                             className="absolute right-3 top-14 text-gray-500 text-lg"
                         >
-                            {showPassword ? <FaEye/> : <FaEyeSlash />}
+                            {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </button>
                         {passwordError && <p className="text-red-500 text-sm mt-2">{passwordError}</p>}
                     </div>

@@ -16,8 +16,7 @@ const AddReview = () => {
         const reviewDescription = form.reviewDescription.value;
         const name = form.name.value;
         const newReview = { gameCover, gameTitle, publishingYear, rating, genre, email, reviewDescription, name }
-        console.log(newReview)
-        fetch('http://localhost:5000/review', {
+        fetch('https://chill-gamer-server-jet.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -26,7 +25,6 @@ const AddReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         title: "success!",

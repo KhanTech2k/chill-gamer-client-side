@@ -10,7 +10,7 @@ const ReviewDetails = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch('http://localhost:5000/watchlist')
+            fetch('https://chill-gamer-server-jet.vercel.app/watchlist')
                 .then((res) => res.json())
                 .then((data) => {
                     const userWatchlist = data.filter(
@@ -23,7 +23,6 @@ const ReviewDetails = () => {
                 );
         }
     }, [user?.email]);
-    console.log("Logged-in User Email:", user?.email);
 
     const handleWatchList = () => {
         const watchItem = {
@@ -51,7 +50,7 @@ const ReviewDetails = () => {
             return;
         }
 
-        fetch("http://localhost:5000/watchlist", {
+        fetch("https://chill-gamer-server-jet.vercel.app/watchlist", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

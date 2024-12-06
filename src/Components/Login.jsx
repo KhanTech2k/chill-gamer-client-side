@@ -4,26 +4,36 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { signInWithEmail, googleProvider } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [showPassword, setShowPassWord] = useState(false);
-    const [email, setEmail] = useState(''); // State to store the email
-    const navigate = useNavigate(); // Hook for navigation
+    const [email, setEmail] = useState('');
+    const navigate = useNavigate();
 
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
                 const user = result.user;
+                Swal.fire({
+                    title: 'Welcome back!',
+                    text: `Hello, ${user.displayName || user.email}`,
+                    icon: 'success',
+                    confirmButtonText: 'Okay',
+                });
                 navigate('/'); // Navigate to the home page
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                // console.error("Google Sign-In Error:", error.message);
                 setError(errorMessage); // Set error message
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Google Sign-In failed. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'Retry',
+                });
             });
     };
 
@@ -31,16 +41,27 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        setEmail(email); // Set the email value to state
+        setEmail(email);
         signInWithEmail(email, password)
             .then((result) => {
                 const user = result.user;
-                navigate('/'); // Navigate to the home page
+                Swal.fire({
+                    title: 'Login Successful!',
+                    text: `Welcome back, ${user.email}`,
+                    icon: 'success',
+                    confirmButtonText: 'Okay',
+                });
+                navigate('/');
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                console.error("Login Error:", error.message);
-                setError(errorMessage); // Set error message
+                setError(errorMessage);
+                Swal.fire({
+                    title: 'Login Failed',
+                    text: 'Please check your email and password.',
+                    icon: 'error',
+                    confirmButtonText: 'Retry',
+                });
             });
     };
 
