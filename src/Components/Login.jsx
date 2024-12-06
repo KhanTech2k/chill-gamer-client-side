@@ -79,7 +79,7 @@ const Login = () => {
                         >
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </button>
-                        <Link to="/forget-password" state={{ email }} className="label-text-alt text-sm text-right mt-2 block">
+                        <Link state={{ email }} className="label-text-alt text-sm text-right mt-2 block">
                             Forgot password?
                         </Link>
                     </div>

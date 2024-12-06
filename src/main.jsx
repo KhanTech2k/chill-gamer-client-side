@@ -17,11 +17,14 @@ import Home from './Components/Home';
 import AddReview from './Components/AddReview';
 import UpdateReview from './Components/UpdateReview';
 import ReviewDetails from './Components/ReviewDetails';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import ErrorPage from './Components/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -35,26 +38,26 @@ const router = createBrowserRouter([
       },
       {
         path: '/allReviews/reviewDetails/:id',
-        element: <ReviewDetails></ReviewDetails>,
+        element: <PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`)
       },
       {
         path: '/addReview',
-        element: <AddReview></AddReview>
+        element: <PrivateRoute><AddReview></AddReview></PrivateRoute>
       },
       {
         path: '/myreviews',
-        element: <MyReviews></MyReviews>,
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
         loader: () => fetch('http://localhost:5000/review')
       },
       {
         path: '/myreviews/updateReview/:id',
-        element: <UpdateReview></UpdateReview>,
+        element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`)
       },
       {
         path: '/watchlist',
-        element: <GameWatchlist></GameWatchlist>,
+        element: <PrivateRoute><GameWatchlist></GameWatchlist></PrivateRoute>,
         loader: () => fetch('http://localhost:5000/watchlist')
       },
       {
