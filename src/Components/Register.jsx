@@ -52,17 +52,15 @@ const Register = () => {
                             displayName: name,
                             photoURL: photo,
                         }));
-                        // Show SweetAlert2 Success Modal
                         Swal.fire({
                             title: 'Registration Successful!',
                             text: `Welcome, ${name}! Your account has been created successfully.`,
                             icon: 'success'
                         }).then(() => {
-                            navigate('/'); // Navigate to the home page
+                            navigate('/');
                         });
                     })
                     .catch((error) => {
-                        // Handle update profile error
                         console.error(error);
                     });
             })

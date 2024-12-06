@@ -86,7 +86,7 @@ const Home = () => {
                     {highestRatedReviews.map((review) => (
                         <div
                             key={review._id}
-                            className="border border-gray-200 shadow-lg rounded-lg p-4 bg-white"
+                            className="border border-gray-200 shadow-lg rounded-lg p-4 "
                         >
                             <img
                                 src={review.gameCover}

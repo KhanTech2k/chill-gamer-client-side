@@ -3,6 +3,7 @@ import NavBar from './NavBar';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
+import DarkMode from './DarkMode';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -49,6 +50,7 @@ const Header = () => {
                             </Link>
                         </div>
                     )}
+                    <DarkMode></DarkMode>
                 </div>
                 <Tooltip id="my-tooltip" />
             </div>
