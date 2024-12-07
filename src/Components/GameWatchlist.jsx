@@ -64,7 +64,8 @@ const GameWatchlist = () => {
     };
 
     return (
-        <div>
+        <div className="mt-8">
+            <h2 className="text-4xl text-center font-bold mb-8 ">My Watchlist</h2>
             <div className="overflow-x-auto shadow-xl rounded-lg">
                 <table className="table table-auto w-full text-center border-collapse shadow-lg">
                     {/* Head */}

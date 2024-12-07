@@ -10,7 +10,7 @@ const Header = () => {
 
     return (
         <div className=" py-6 shadow-lg">
-            <div className="flex flex-col lg:flex-row justify-between items-center px-10 py-6">
+            <div className="flex flex-col lg:flex-row justify-between items-center lg:px-10 py-6">
                 <h2 className="text-3xl font-bold tracking-wide">
                     Chill<span className="text-[#F5B041]">GAMER</span>
                 </h2>

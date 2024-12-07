@@ -1,9 +1,9 @@
 import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
-import darazbanner from "../assets/daraz-banner.jpg";
-import pickaboobanner from "../assets/pickaboo-banner.jpg";
-import ajkerdeal from "../assets/Ajker-deal.jpg";
-import Foodpanda from "../assets/Foodpanda.png";
+import pubgBanner from "../assets/pubg.jpg";
+import callOfDutyBanner from "../assets/CallOfDuty.jpeg";
+import fortniteBanner from "../assets/Fortnite.jpg";
+import leagueOfLegendsBanner from "../assets/LeagueofLegends.jpg";
 import { Carousel } from "react-responsive-carousel";
 import Slider from "react-slick";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -74,32 +74,32 @@ const Home = () => {
                         </button>
                     )}
                 >
-                    <div className="w-9/12 mx-auto object-cover">
+                    <div className="w-full lg:w-9/12 mx-auto object-cover">
                         <img
-                            src={darazbanner}
+                            src={pubgBanner}
                             alt="image 1"
                             className="w-full h-[350px] rounded-lg shadow-lg"
                         />
                     </div>
-                    <div className="w-9/12 mx-auto object-cover">
+                    <div className="w-full lg:w-9/12 mx-auto object-cover">
                         <img
-                            src={pickaboobanner}
+                            src={fortniteBanner}
                             alt="image 2"
                             className="w-full h-[350px] rounded-lg shadow-lg"
                         />
                     </div>
-                    <div className="w-9/12 mx-auto object-cover">
+                    <div className="w-full lg:w-9/12 mx-auto object-cover">
                         <img
-                            src={ajkerdeal}
+                            src={callOfDutyBanner}
                             alt="image 3"
                             className="w-full h-[350px] rounded-lg shadow-lg"
                         />
                     </div>
-                    <div className="w-9/12 mx-auto object-cover">
+                    <div className="w-full lg:w-9/12 mx-auto object-cover">
                         <img
-                            src={Foodpanda}
+                            src={leagueOfLegendsBanner}
                             alt="image 4"
-                            className="w-full h-[250px] lg:h-[350px] rounded-lg shadow-lg"
+                            className="w-full h-[350px] rounded-lg shadow-lg"
                         />
                     </div>
                 </Carousel>
@@ -145,7 +145,7 @@ const Home = () => {
                     ))}
                 </div>
             </div>
-            <div className="mt-12">
+            <div className="mt-12 px-8">
                 <h2 className="text-3xl font-extrabold text-center mb-6">
                     <Typewriter
                         words={["New Releases"]}

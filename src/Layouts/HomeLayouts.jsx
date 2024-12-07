@@ -4,10 +4,12 @@ import Footer from '../Components/Footer';
 
 const HomeLayout = () => {
     return (
-        <div className='container mx-auto py-5'>
+        <div className='py-5'>
             <header>
                 <Header></Header>
-                <Outlet></Outlet>
+                <div className='container mx-auto '>
+                    <Outlet></Outlet>
+                </div>
                 <Footer></Footer>
             </header>
         </div>
