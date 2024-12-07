@@ -29,7 +29,7 @@ const AllReviews = () => {
         setFilterGenre(genre);
 
         let filtered;
-        if (genre === "all") {
+        if (genre === "All") {
             filtered = reviews;
         } else {
             filtered = reviews.filter((review) => review.genre === genre);
@@ -39,39 +39,42 @@ const AllReviews = () => {
         setFilteredReviews(sortedFilteredReviews);
     };
 
-    const genres = ["all", ...new Set(reviews.map((review) => review.genre))];
+    const genres = ["All", ...new Set(reviews.map((review) => review.genre))];
 
     return (
-        <div>
-            <h1 className="text-2xl font-bold">All Reviews</h1>
-            <p>Total Reviews: {filteredReviews.length}</p>
+        <div className="mt-8">
+            <h1 className="text-4xl font-bold text-center">All Reviews</h1>
+            <div className="flex justify-between items-center m-4">
+                <p className="text-2xl font-semibold">Total Reviews: {filteredReviews.length}</p>
+                <div>
+                    <div className="dropdown">
+                        <label>Sort by:</label>
+                        <select
+                            value={sortOption}
+                            onChange={(e) => handleSort(e.target.value)}
+                            className="ml-2 p-2 border rounded"
+                        >
+                            <option value="">Select</option>
+                            <option value="rating">Rating</option>
+                            <option value="year">Year</option>
+                        </select>
+                    </div>
 
-            <div className="dropdown">
-                <label>Sort by:</label>
-                <select
-                    value={sortOption}
-                    onChange={(e) => handleSort(e.target.value)}
-                    className="ml-2 p-2 border rounded"
-                >
-                    <option value="">Select</option>
-                    <option value="rating">Rating</option>
-                    <option value="year">Year</option>
-                </select>
-            </div>
-
-            <div className="dropdown mt-4">
-                <label>Filter by Genre:</label>
-                <select
-                    value={filterGenre}
-                    onChange={(e) => handleFilter(e.target.value)}
-                    className="ml-2 p-2 border rounded"
-                >
-                    {genres.map((genre) => (
-                        <option key={genre} value={genre}>
-                            {genre}
-                        </option>
-                    ))}
-                </select>
+                    <div className="dropdown mt-4 ml-2">
+                        <label>Filter by Genre:</label>
+                        <select
+                            value={filterGenre}
+                            onChange={(e) => handleFilter(e.target.value)}
+                            className="ml-2 p-2 border rounded"
+                        >
+                            {genres.map((genre) => (
+                                <option key={genre} value={genre}>
+                                    {genre}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredReviews.map((review) => (
@@ -93,7 +96,7 @@ const AllReviews = () => {
                                 <span className="font-medium">{review.genre}</span>
                             </p>
                             <p className="mb-1">
-                                📅 Year:{" "}
+                                📅 Publishing Year:{" "}
                                 <span className="font-medium">{review.publishingYear}</span>
                             </p>
                             <p className="text-indigo-600 font-bold text-lg">

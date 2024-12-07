@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const loadedReviews = useLoaderData();
-    const [reviews, setReviews] = useState(loadedReviews)
+    const [reviews, setReviews] = useState(loadedReviews);
 
     // Filter reviews based on email match
     const userReviews = reviews.filter(review => review.email === user?.email);
@@ -42,33 +42,31 @@ const MyReviews = () => {
         });
     }
     return (
-        <div>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
-                    <thead>
+        <div className='mt-8'>
+            <h2 className='text-center text-4xl font-bold  mb-8'>My Reviews</h2>
+            <div className="overflow-x-auto shadow-xl rounded-lg">
+                <table className="table table-auto w-full text-center border-collapse">
+                    <thead className="bg-indigo-600 text-white">
                         <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                            <th>Action</th>
+                            <th className="py-3 px-5 text-lg font-semibold">No.</th>
+                            <th className="py-3 px-5 text-lg font-semibold">Game Title</th>
+                            <th className="py-3 px-5 text-lg font-semibold">Genre</th>
+                            <th className="py-3 px-5 text-lg font-semibold">Rating</th>
+                            <th className="py-3 px-5 text-lg font-semibold">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
                         {
-                            userReviews.map((review, index) => <tr key={review._id}>
-                                <th>{index + 1}</th>
-                                <td>{review.gameTitle}</td>
-                                <td>{review.reviewDescription}</td>
-                                <td>Blue</td>
-                                <td>
-                                    <button onClick={() => handleDelete(review._id)} className='btn'>X</button>
-                                    <Link to={`updateReview/${review._id}`}>
-                                        <button className="btn btn-primary">E</button>
+                            userReviews.map((review, index) => <tr key={review._id} className="hover:bg-gray-100 transition duration-200">
+                                <th className="py-3 px-5 text-lg font-semibold">{index + 1}</th>
+                                <td className="py-3 px-5 text-lg font-semibold">{review.gameTitle}</td>
+                                <td className="py-3 px-5 text-lg font-semibold">{review.genre}</td>
+                                <td className="py-3 px-5 text-lg font-semibold">{review.rating}/10</td>
+                                <td className="py-3 px-5 text-lg font-semibold">
+                                    <Link to={`updateReview/${review._id}`} className="inline-block mb-2">
+                                        <button className="btn btn-primary px-5 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition duration-200">Edit</button>
                                     </Link>
-
+                                    <button onClick={() => handleDelete(review._id)} className="btn px-5 py-2 rounded-md ml-2 text-white bg-red-600 hover:bg-red-700 transition duration-200">Delete</button>
                                 </td>
                             </tr>)
                         }

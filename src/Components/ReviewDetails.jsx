@@ -91,7 +91,7 @@ const ReviewDetails = () => {
                     <h2 className="text-3xl font-semibold text-gray-800">{review.gameTitle}</h2>
                     <p className="text-xl text-gray-600">Genre: {review.genre}</p>
                     <p className="text-xl font-semibold text-gray-900">Rating:{review.rating}/10</p>
-                    <p className="text-lg text-gray-600 mt-4">{review.reviewDescription}</p>
+                    <p className="text-lg text-gray-600 mt-4">Description: {review.reviewDescription}</p>
                     <div className="mt-6">
                         <p className="text-lg font-semibold text-gray-800">Reviewed by:{review.name}</p>
                         <p className="text-lg text-gray-500">Reviewer Email: {review.email}</p>

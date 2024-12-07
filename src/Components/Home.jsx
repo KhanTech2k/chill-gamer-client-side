@@ -128,7 +128,7 @@ const Home = () => {
                                     <span className="font-medium">{review.genre}</span>
                                 </p>
                                 <p className="mb-1">
-                                    📅 Year:{" "}
+                                    📅 Publishing Year:{" "}
                                     <span className="font-medium">{review.publishingYear}</span>
                                 </p>
                                 <p className="text-indigo-600 font-bold text-lg">
@@ -179,7 +179,7 @@ const Home = () => {
                                         <span className="font-medium">{review.genre}</span>
                                     </p>
                                     <p className="mb-1">
-                                        📅 Year:{" "}
+                                        📅 Publishing Year:{" "}
                                         <span className="font-medium">{review.publishingYear}</span>
                                     </p>
                                     <Link
