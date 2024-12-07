@@ -37,8 +37,8 @@ const AddReview = () => {
             })
     }
     return (
-        <div className='bg-[#F4F3F0] p-24 '>
-            <h1 className='text-3xl font-extrabold'>Add New Review</h1>
+        <div className='lg:w-9/12 p-4 lg:p-16 mx-auto '>
+            <h1 className='text-4xl text-center font-extrabold mb-8'>Add New Review</h1>
             <form onSubmit={handleAddReview}>
                 <div className='md:flex '>
                     <div className="form-control md:w-1/2">
@@ -49,7 +49,7 @@ const AddReview = () => {
                             <input type="url" name='gameCover' placeholder="Enter the URL for the game cover" className="input input-bordered w-full" required />
                         </label>
                     </div>
-                    <div className="form-control md:w-1/2 ml-4">
+                    <div className="form-control md:w-1/2 lg:ml-4">
                         <label className="label">
                             <span className="label-text">Game Title</span>
                         </label>
@@ -58,21 +58,36 @@ const AddReview = () => {
                         </label>
                     </div>
                 </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Review Description</span>
+                    </label>
+                    <label className="input-group">
+                        <textarea
+                            name="reviewDescription"
+                            placeholder="Write a detailed review"
+                            className="textarea textarea-bordered w-full  shadow-sm rounded-lg focus:ring focus:ring-indigo-300"
+                            rows="2"
+                            required
+                        ></textarea>
+                    </label>
+                </div>
+
                 <div className='md:flex '>
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text">Publishing Year</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="number" name='publishingYear' placeholder="e.g., 2024" className="input input-bordered w-full" min="1900" max="2024" required />
-                        </label>
-                    </div>
-                    <div className="form-control md:w-1/2 ml-4">
+                    <div className="form-control md:w-1/2 ">
                         <label className="label">
                             <span className="label-text">Rating (1-10)</span>
                         </label>
                         <label className="input-group">
                             <input type="number" name='rating' placeholder="Enter a rating (1-10)" className="input input-bordered w-full" min="1" max="10" required />
+                        </label>
+                    </div>
+                    <div className="form-control md:w-1/2 lg:ml-4">
+                        <label className="label">
+                            <span className="label-text">Publishing Year</span>
+                        </label>
+                        <label className="input-group">
+                            <input type="number" name='publishingYear' placeholder="e.g., 2024" className="input input-bordered w-full" min="1900" max="2024" required />
                         </label>
                     </div>
                 </div>
@@ -90,7 +105,7 @@ const AddReview = () => {
                             </select>
                         </label>
                     </div>
-                    <div className="form-control md:w-1/2 ml-4">
+                    <div className="form-control md:w-1/2 lg:ml-4">
                         <label className="label">
                             <span className="label-text">User Email</span>
                         </label>
@@ -101,21 +116,13 @@ const AddReview = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Review Description</span>
-                    </label>
-                    <label className="input-group">
-                        <textarea name='reviewDescription' placeholder="Write a detailed review" className="input input-bordered w-full" rows="5" required></textarea>
-                    </label>
-                </div>
-                <div className="form-control">
-                    <label className="label">
                         <span className="label-text">User Name</span>
                     </label>
                     <label className="input-group">
                         <input type="text" name='name' value={user ? user.displayName : 'null'} className="input input-bordered w-full" readOnly />
                     </label>
                 </div>
-                <input type="submit" value="Submit Review" className='btn btn-block bg-gray-500' />
+                <input type="submit" value="Submit Review" className='btn btn-block mt-4 bg-indigo-600 hover:bg-indigo-700' />
             </form>
         </div>
 

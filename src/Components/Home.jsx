@@ -99,12 +99,12 @@ const Home = () => {
                         <img
                             src={Foodpanda}
                             alt="image 4"
-                            className="w-full h-[350px] rounded-lg shadow-lg"
+                            className="w-full h-[250px] lg:h-[350px] rounded-lg shadow-lg"
                         />
                     </div>
                 </Carousel>
             </div>
-            <div className="mt-8">
+            <div className="mt-8 p-4">
                 <h2 className="text-3xl font-extrabold text-center mb-6">
                     Highest Rated Games
                 </h2>
@@ -117,7 +117,7 @@ const Home = () => {
                             <img
                                 src={review.gameCover}
                                 alt={review.gameTitle}
-                                className="w-full h-56 object-cover"
+                                className="w-full h-72 object-cover"
                             />
                             <div className="p-6">
                                 <h3 className="text-xl font-semibold mb-2">

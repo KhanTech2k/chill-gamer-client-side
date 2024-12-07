@@ -73,16 +73,39 @@ const AllReviews = () => {
                     ))}
                 </select>
             </div>
-            <div className="mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredReviews.map((review) => (
-                    <div key={review._id} className="mb-4 p-4 border rounded shadow">
-                        <h2 className="text-xl font-semibold">Review: {review.gameTitle}</h2>
-                        <p>Rating: {review.rating}</p>
-                        <p>Year: {review.publishingYear}</p>
-                        <p>Genre: {review.genre}</p>
-                        <Link to={`reviewDetails/${review._id}`}>
-                            <button className="btn btn-primary mt-2">Explore Details</button>
-                        </Link>
+                    <div
+                        key={review._id}
+                        className="border border-gray-200 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2"
+                    >
+                        <img
+                            src={review.gameCover}
+                            alt={review.gameTitle}
+                            className="w-full h-72 object-cover"
+                        />
+                        <div className="p-6">
+                            <h3 className="text-xl font-semibold mb-2">
+                                {review.gameTitle}
+                            </h3>
+                            <p className="mb-1">
+                                🎮 Genre:{" "}
+                                <span className="font-medium">{review.genre}</span>
+                            </p>
+                            <p className="mb-1">
+                                📅 Year:{" "}
+                                <span className="font-medium">{review.publishingYear}</span>
+                            </p>
+                            <p className="text-indigo-600 font-bold text-lg">
+                                ⭐ Rating: {review.rating}/10
+                            </p>
+                            <Link
+                                to={`/allReviews/reviewDetails/${review._id}`}
+                                className="inline-block mt-4 px-6 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition"
+                            >
+                                Explore Details
+                            </Link>
+                        </div>
                     </div>
                 ))}
             </div>
