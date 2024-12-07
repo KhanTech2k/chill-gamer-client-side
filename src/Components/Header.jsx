@@ -9,9 +9,9 @@ const Header = () => {
     const { user, logOut } = useContext(AuthContext);
 
     return (
-        <div className="bg-gradient-to-r  from-[#8E44AD]  to-[#6A0DAD] py-6 shadow-lg">
+        <div className=" py-6 shadow-lg">
             <div className="flex flex-col lg:flex-row justify-between items-center px-10 py-6">
-                <h2 className="text-3xl font-bold text-white tracking-wide">
+                <h2 className="text-3xl font-bold tracking-wide">
                     Chill<span className="text-[#F5B041]">GAMER</span>
                 </h2>
                 <NavBar></NavBar>

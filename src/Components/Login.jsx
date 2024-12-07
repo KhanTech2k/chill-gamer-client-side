@@ -104,7 +104,6 @@ const Login = () => {
                             Forgot password?
                         </Link>
                     </div>
-                    {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                     <div className="form-control mt-6">
                         <button className="btn btn-primary w-full">Login</button>
                     </div>
