@@ -19,6 +19,7 @@ import UpdateReview from './Components/UpdateReview';
 import ReviewDetails from './Components/ReviewDetails';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import ErrorPage from './Components/ErrorPage';
+import UpcomingGames from './Components/upcomingGames';
 
 const router = createBrowserRouter([
   {

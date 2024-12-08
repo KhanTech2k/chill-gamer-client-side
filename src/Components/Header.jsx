@@ -17,7 +17,7 @@ const Header = () => {
                 <NavBar></NavBar>
                 <div className="space-x-6 flex items-center">
                     {user && user.displayName ? (
-                        <div className="flex flex-col lg:flex-row items-center gap-4 text-white">
+                        <div className="flex flex-row items-center gap-4 text-white">
                             <a
                                 data-tooltip-id="my-tooltip"
                                 data-tooltip-content={user.displayName}

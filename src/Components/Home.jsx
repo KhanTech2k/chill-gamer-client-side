@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "animate.css";
 import { Typewriter } from "react-simple-typewriter";
+import UpcomingGames from "./upcomingGames";
 
 const Home = () => {
     const reviews = useLoaderData();
@@ -193,6 +194,9 @@ const Home = () => {
                         </div>
                     ))}
                 </Slider>
+            </div>
+            <div>
+                <UpcomingGames></UpcomingGames>
             </div>
         </div>
     );
