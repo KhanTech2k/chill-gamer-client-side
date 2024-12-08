@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import pubgBanner from "../assets/pubg.jpg";
 import callOfDutyBanner from "../assets/CallOfDuty.jpeg";
@@ -14,8 +14,19 @@ import { Typewriter } from "react-simple-typewriter";
 import UpcomingGames from "./upcomingGames";
 
 const Home = () => {
-    const reviews = useLoaderData();
+    const loadedReviews = useLoaderData();
+    const [reviews , setReviews] = useState(loadedReviews)
     const highestRatedReviews = reviews.sort((a, b) => b.rating - a.rating).slice(0, 6);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setReviews(reviews);
+            setLoading(false);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, [reviews]);
 
     const settings = {
         dots: true,
@@ -41,6 +52,13 @@ const Home = () => {
     };
 
     const newReleases = reviews.filter((review) => review.publishingYear >= 2024);
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="spinner-border animate-spin inline-block w-10 h-10 border-4 rounded-full border-indigo-600 border-t-transparent"></div>
+            </div>
+        );
+    }
 
     return (
         <div>

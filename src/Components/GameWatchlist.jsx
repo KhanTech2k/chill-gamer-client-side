@@ -7,14 +7,18 @@ const GameWatchlist = () => {
     const allWatchlistData = useLoaderData();
     const { user } = useContext(AuthContext);
     const [userWatchlist, setUserWatchlist] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (user?.email) {
-            const filteredData = allWatchlistData.filter(
-                (item) => item.userEmail === user.email
-            );
-            setUserWatchlist(filteredData);
-        }
+        setTimeout(() => {
+            if (user?.email) {
+                const filteredData = allWatchlistData.filter(
+                    (item) => item.userEmail === user.email
+                );
+                setUserWatchlist(filteredData);
+            }
+            setLoading(false);
+        }, 500);
     }, [allWatchlistData, user?.email]);
 
     const handleDeleteWatchlist = (id) => {
@@ -39,8 +43,6 @@ const GameWatchlist = () => {
                                 text: "Your item has been deleted.",
                                 icon: "success",
                             });
-
-                            // Filter out the deleted item from the state
                             const updatedWatchlist = userWatchlist.filter((item) => item._id !== id);
                             setUserWatchlist(updatedWatchlist);
                         } else {
@@ -62,13 +64,19 @@ const GameWatchlist = () => {
             }
         });
     };
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="spinner-border animate-spin inline-block w-10 h-10 border-4 rounded-full border-indigo-600 border-t-transparent"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="mt-8">
             <h2 className="text-4xl text-center font-bold mb-8 ">My Watchlist</h2>
             <div className="overflow-x-auto shadow-xl rounded-lg">
                 <table className="table table-auto w-full text-center border-collapse shadow-lg">
-                    {/* Head */}
                     <thead className="bg-indigo-600 text-white">
                         <tr>
                             <th className="py-3 px-5 text-lg font-semibold">No.</th>
@@ -79,14 +87,12 @@ const GameWatchlist = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* Table rows */}
                         {userWatchlist.map((review, index) => (
                             <tr key={review._id} className="hover:bg-gray-100 transition duration-200">
                                 <th className="py-3 px-5 text-lg font-semibold">{index + 1}</th>
                                 <td className="py-3 px-5 text-lg font-semibold">{review.gameTitle}</td>
                                 <td className="py-3 px-5 text-lg font-semibold">{review.rating}/10</td>
-                                <td className="py-3 px-5 text-lg font-semibold">{review.reviewerEmail
-                                }</td>
+                                <td className="py-3 px-5 text-lg font-semibold">{review.reviewerEmail}</td>
                                 <td className="py-3 px-5 text-lg font-semibold">
                                     <button
                                         onClick={() => handleDeleteWatchlist(review._id)}
@@ -100,7 +106,6 @@ const GameWatchlist = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
     );
 };

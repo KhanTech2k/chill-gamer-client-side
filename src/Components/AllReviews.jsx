@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllReviews = () => {
@@ -6,6 +6,16 @@ const AllReviews = () => {
     const [filteredReviews, setFilteredReviews] = useState(reviews);
     const [sortOption, setSortOption] = useState("");
     const [filterGenre, setFilterGenre] = useState("");
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setFilteredReviews(reviews);
+            setLoading(false);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, [reviews]);
 
     const applySorting = (reviewsToSort, option) => {
         return [...reviewsToSort].sort((a, b) => {
@@ -40,6 +50,14 @@ const AllReviews = () => {
     };
 
     const genres = ["All", ...new Set(reviews.map((review) => review.genre))];
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="spinner-border animate-spin inline-block w-10 h-10 border-4 rounded-full border-indigo-600 border-t-transparent"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="mt-8">

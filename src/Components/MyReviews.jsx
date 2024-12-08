@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
@@ -7,8 +7,17 @@ const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const loadedReviews = useLoaderData();
     const [reviews, setReviews] = useState(loadedReviews);
+    const [loading, setLoading] = useState(true);
 
-    // Filter reviews based on email match
+    useEffect(() => {
+        if (loadedReviews.length > 0) {
+            setTimeout(() => {
+                setReviews(loadedReviews);
+                setLoading(false);
+            }, 500);
+        }
+    }, [loadedReviews]);
+
     const userReviews = reviews.filter(review => review.email === user?.email);
 
     const handleDelete = id => {
@@ -41,6 +50,14 @@ const MyReviews = () => {
             }
         });
     }
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="spinner-border animate-spin inline-block w-10 h-10 border-4 rounded-full border-indigo-600 border-t-transparent"></div>
+            </div>
+        );
+    }
+
     return (
         <div className='mt-8'>
             <h2 className='text-center text-4xl font-bold  mb-8'>My Reviews</h2>
