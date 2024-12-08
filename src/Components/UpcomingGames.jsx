@@ -18,7 +18,7 @@ const UpcomingGames = () => {
         {upcomingGames.map((game) => (
           <div
             key={game.title}
-            className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 mx-4"
+            className=" rounded-lg border border-gray-300 shadow-md hover:shadow-lg transition-shadow duration-300 mx-4"
             style={{ width: "250px" }}
           >
             <img
@@ -27,8 +27,8 @@ const UpcomingGames = () => {
               className="rounded-t-lg w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-lg font-semibold text-gray-800">{game.title}</h3>
-              <p className="text-sm text-gray-600 mt-2">Release Date: {game.releaseDate}</p>
+              <h3 className="text-lg font-semibold ">{game.title}</h3>
+              <p className="text-sm  mt-2">Release Date: {game.releaseDate}</p>
               <p className="text-sm text-blue-600 font-medium mt-2">
                 {Math.ceil(
                   (new Date(game.releaseDate) - new Date()) / (1000 * 60 * 60 * 24)

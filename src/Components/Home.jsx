@@ -12,10 +12,12 @@ import "slick-carousel/slick/slick-theme.css";
 import "animate.css";
 import { Typewriter } from "react-simple-typewriter";
 import UpcomingGames from "./upcomingGames";
+import { IoLogoGameControllerB, IoMdStar } from "react-icons/io";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 const Home = () => {
     const loadedReviews = useLoaderData();
-    const [reviews , setReviews] = useState(loadedReviews)
+    const [reviews, setReviews] = useState(loadedReviews)
     const highestRatedReviews = reviews.sort((a, b) => b.rating - a.rating).slice(0, 6);
     const [loading, setLoading] = useState(true);
 
@@ -142,16 +144,17 @@ const Home = () => {
                                 <h3 className="text-xl font-semibold mb-2">
                                     {review.gameTitle}
                                 </h3>
-                                <p className="mb-1">
-                                    🎮 Genre:{" "}
+                                <p className="mb-1 flex justify-start items-center gap-2">
+                                    <span className="text-xl">
+                                        <IoLogoGameControllerB></IoLogoGameControllerB></span> Genre:
                                     <span className="font-medium">{review.genre}</span>
                                 </p>
-                                <p className="mb-1">
-                                    📅 Publishing Year:{" "}
+                                <p className="mb-1 flex justify-start items-center gap-2">
+                                    <span className="text-xl text-[#4A90E2]"><FaRegCalendarAlt></FaRegCalendarAlt></span> Publishing Year:{" "}
                                     <span className="font-medium">{review.publishingYear}</span>
                                 </p>
-                                <p className="text-indigo-600 font-bold text-lg">
-                                    ⭐ Rating: {review.rating}/10
+                                <p className="text-indigo-600 font-bold text-lg flex justify-start items-center gap-1">
+                                    <span className="text-2xl text-[#FFD700]"> <IoMdStar></IoMdStar></span>Rating:{review.rating}/10
                                 </p>
                                 <Link
                                     to={`/allReviews/reviewDetails/${review._id}`}
@@ -193,12 +196,13 @@ const Home = () => {
                                         {review.gameTitle}
                                         <div className="badge ml-4 bg-green-900 text-white">NEW</div>
                                     </h3>
-                                    <p className="mb-1">
-                                        🎮 Genre:{" "}
+                                    <p className="mb-1 flex justify-start items-center gap-2">
+                                        <span className="text-xl">
+                                            <IoLogoGameControllerB></IoLogoGameControllerB></span> Genre:
                                         <span className="font-medium">{review.genre}</span>
                                     </p>
-                                    <p className="mb-1">
-                                        📅 Publishing Year:{" "}
+                                    <p className="mb-1 flex justify-start items-center gap-2">
+                                        <span className="text-xl text-[#4A90E2]"><FaRegCalendarAlt></FaRegCalendarAlt></span> Publishing Year:{" "}
                                         <span className="font-medium">{review.publishingYear}</span>
                                     </p>
                                     <Link

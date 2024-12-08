@@ -37,7 +37,11 @@ const DarkMode = () => {
 
   return (
     <div className="dark_mode" onClick={toggleTheme}>
-      <span className="icon text-2xl cursor-pointer">
+      <span
+        className={`icon text-2xl cursor-pointer transition-colors duration-300 ${
+          isDarkMode ? "text-yellow-400" : "text-gray-800"
+        }`}
+      >
         {isDarkMode ? <MdOutlineDarkMode /> : <CiLight />}
       </span>
     </div>
