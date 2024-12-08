@@ -85,7 +85,7 @@ const MyReviews = () => {
                                 <td className="py-3 px-5 text-lg font-semibold">{review.rating}/10</td>
                                 <td className="py-3 px-5 text-lg font-semibold">
                                     <Link to={`updateReview/${review._id}`} className="inline-block mb-2">
-                                        <button className="btn btn-primary px-5 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition duration-200">Edit</button>
+                                        <button className="btn btn-primary px-5 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition duration-200">Update</button>
                                     </Link>
                                     <button onClick={() => handleDelete(review._id)} className="btn px-5 py-2 rounded-md ml-2 text-white bg-red-600 hover:bg-red-700 transition duration-200">Delete</button>
                                 </td>

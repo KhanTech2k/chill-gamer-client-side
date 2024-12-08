@@ -1,8 +1,29 @@
-# React + Vite
+Website Name: Chill Gamer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Website: https://chill-gamer-2k25.web.app/
 
-Currently, two official plugins are available:
+Description:
+Chill Gamer is a gaming review platform designed for enthusiasts who want insightful, detailed, and interactive reviews of the latest games. It provides a modern and responsive design to ensure an engaging user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Website Features:
+
+Gaming Reviews:
+Users can explore detailed reviews about various games, making it easier to discover new favorites.
+
+CRUD Operations:
+The platform supports creating, reading, updating, and deleting reviews seamlessly using MongoDB Atlas.
+
+Dark and Light Mode:
+A theme toggle option lets users switch between dark and light modes based on their preference.
+
+Advanced Navigation and Interactivity:
+Built with React Router for smooth page navigation, and enhanced with React Icons, tooltips, and dynamic animations using React Simple Typewriter.
+
+Responsive Design:
+Ensures the website works flawlessly across all devices, from desktops to smartphones.
+
+Technology Stack:
+
+Frontend: React.js
+Backend: MongoDB Atlas
+UI Features: React Router, React Icons, React Tooltip, React Simple Typewriter
