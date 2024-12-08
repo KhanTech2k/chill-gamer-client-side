@@ -17,22 +17,21 @@ const Footer = () => {
                         <h2 className="text-lg font-semibold mb-4">Explore</h2>
                         <ul>
                             <li>
-                                <Link><p className="text-gray-400 hover:text-white transition"
-                                >About Us</p>
+                                <Link><p className='text-gray-400'>About Us</p>
                                 </Link>
                             </li>
                             <li>
-                                <Link to='/allReviews'><p className="text-gray-400 hover:text-white transition">
+                                <Link to='/allReviews'><p className='text-gray-400'>
                                     Reviews
                                 </p></Link>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white transition">
+                                <a className='text-gray-400'>
                                     Contact
                                 </a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white transition">
+                                <a className='text-gray-400'>
                                     Privacy Policy
                                 </a>
                             </li>

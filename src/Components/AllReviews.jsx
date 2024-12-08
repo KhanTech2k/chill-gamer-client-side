@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { CiStar } from "react-icons/ci";
 import { FaCalendarAlt, FaRegCalendarAlt } from "react-icons/fa";
 import { IoLogoGameControllerB, IoMdStar } from "react-icons/io";
@@ -64,6 +65,9 @@ const AllReviews = () => {
 
     return (
         <div className="mt-8">
+            <Helmet>
+                <title>All Reviews | ChillGamers</title>
+            </Helmet>
             <h1 className="text-4xl font-bold text-center">All Reviews</h1>
             <div className="flex justify-between items-center m-4">
                 <p className="text-2xl font-semibold">Total Reviews: {filteredReviews.length}</p>

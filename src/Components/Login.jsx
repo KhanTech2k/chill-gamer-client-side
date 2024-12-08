@@ -5,6 +5,7 @@ import auth from '../firebase/firebase.config';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const { signInWithEmail, googleProvider } = useContext(AuthContext);
@@ -67,6 +68,7 @@ const Login = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
+            <Helmet><title>Login | ChillGamers</title></Helmet>
             <div className="w-full max-w-md p-6 bg-white border border-gray-200 shadow-lg rounded-lg">
                 <h1 className="text-2xl lg:text-4xl font-bold text-center mb-6">Login Now!</h1>
                 <form onSubmit={handleLogin} className="space-y-4">

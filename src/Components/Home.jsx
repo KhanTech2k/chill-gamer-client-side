@@ -14,6 +14,7 @@ import { Typewriter } from "react-simple-typewriter";
 import UpcomingGames from "./upcomingGames";
 import { IoLogoGameControllerB, IoMdStar } from "react-icons/io";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     const loadedReviews = useLoaderData();
@@ -64,6 +65,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Home | ChillGamers</title>
+            </Helmet>
             <div className="w-full mx-auto my-10 animate__animated animate__fadeInDown">
                 <Carousel
                     infiniteLoop
@@ -183,7 +187,7 @@ const Home = () => {
                     {newReleases.map((review) => (
                         <div
                             key={review._id}
-                            className="px-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
+                            className="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 "
                         >
                             <div className="border border-gray-200 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
                                 <img

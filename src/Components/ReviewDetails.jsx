@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const ReviewDetails = () => {
     const review = useLoaderData();
@@ -81,6 +82,7 @@ const ReviewDetails = () => {
 
     return (
         <div className="container mx-auto p-6">
+            <Helmet><title>Review Details | ChillGamers</title></Helmet>
             <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
                 <img
                     src={review.gameCover}

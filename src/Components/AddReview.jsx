@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const AddReview = () => {
     const { user } = useContext(AuthContext)
@@ -38,6 +39,9 @@ const AddReview = () => {
     }
     return (
         <div className='lg:w-9/12 p-4 lg:p-16 mx-auto '>
+            <Helmet>
+                <title>Add Review | ChillGamers</title>
+            </Helmet>
             <h1 className='text-4xl text-center font-extrabold mb-8'>Add New Review</h1>
             <form onSubmit={handleAddReview}>
                 <div className='md:flex '>

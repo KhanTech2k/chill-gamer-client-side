@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -60,6 +61,9 @@ const MyReviews = () => {
 
     return (
         <div className='mt-8'>
+            <Helmet>
+                <title>My Reviews | ChillGamers</title>
+            </Helmet>
             <h2 className='text-center text-4xl font-bold  mb-8'>My Reviews</h2>
             <div className="overflow-x-auto shadow-xl rounded-lg">
                 <table className="table table-auto w-full text-center border-collapse">

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const UpdateReview = () => {
     const {_id, gameCover, gameTitle, publishingYear, rating, genre, email, reviewDescription, name } = useLoaderData()
@@ -39,6 +40,7 @@ const UpdateReview = () => {
     }
     return (
         <div className='bg-[#F4F3F0] p-24 '>
+            <Helmet><title>Update Review | ChillGamers</title></Helmet>
             <h1 className='text-3xl font-extrabold'>Update Review</h1>
             <form onSubmit={handleUpdateReview}>
                 <div className='md:flex '>
