@@ -24,7 +24,8 @@
 
 ## Screenshots
 
-![Screenshot](https://i.ibb.co.com/3JGgvFm/Screenshot-2025-02-05-165129.png)
+![Screenshot](https://i.ibb.co/3JGgvFm/Screenshot-2025-02-05-165129.png)
+
 
 ## Core Features
 
