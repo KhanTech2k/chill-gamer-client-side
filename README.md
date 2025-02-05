@@ -85,7 +85,7 @@
 ## Live Project Links and Other Resources
 
 - **Live Website**: [Chill Gamer](https://chill-gamer-2k25.web.app/)
-- **GitHub Repository**: [Chill Gamer GitHub](https://github.com/piash2k/Chill-Gamer)
+- **GitHub Repository**: [Chill Gamer GitHub](https://github.com/piash2k/Chill-Gamer-Client-Side)
 
 ---
 
